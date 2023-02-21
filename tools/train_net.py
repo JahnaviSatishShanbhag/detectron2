@@ -25,7 +25,6 @@ from detectron2.checkpoint import DetectionCheckpointer
 from detectron2.config import get_cfg
 from detectron2.data import MetadataCatalog
 from detectron2.engine import DefaultTrainer, default_argument_parser, default_setup, hooks, launch
-from detectron2.data.datasets.coco import load_coco_json, register_coco_instances
 from detectron2.evaluation import (
     CityscapesInstanceEvaluator,
     CityscapesSemSegEvaluator,
@@ -38,22 +37,6 @@ from detectron2.evaluation import (
     verify_results,
 )
 from detectron2.modeling import GeneralizedRCNNWithTTA
-
-def register_custom_datasets():
-    # doclaynet dataset
-    DATASET_ROOT = "/kaggle/input/doclaynet/"
-    ANN_ROOT = os.path.join(DATASET_ROOT, "COCO")
-    TRAIN_PATH = os.path.join(DATASET_ROOT, "PNG")
-    VAL_PATH = os.path.join(DATASET_ROOT, "PNG")
-    TEST_PATH = os.path.join(DATASET_ROOT, "PNG")
-    TRAIN_JSON = os.path.join(ANN_ROOT, "train.json")
-    VAL_JSON = os.path.join(ANN_ROOT, "val.json")
-    TEST_JSON = os.path.join(ANN_ROOT, "test.json")
-    register_coco_instances("doclaynet_train", {}, TRAIN_JSON, TRAIN_PATH)
-    register_coco_instances("doclaynet_val", {}, VAL_JSON, VAL_PATH)
-    register_coco_instances("doclaynet_test", {}, TEST_JSON, TEST_PATH)
-
-register_custom_datasets()
 
 
 def build_evaluator(cfg, dataset_name, output_folder=None):
