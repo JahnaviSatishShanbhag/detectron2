@@ -9,7 +9,8 @@ MODEL:
 INPUT:
   POINT_SUP: True
 DATASETS:
-  TRAIN: ("coco_2017_train_points_n10_v1_without_masks",)
+  TRAIN: ("doclaynet_train",)
+  TEST: ("doclaynet_test",)
 SOLVER:
   STEPS: (210000, 250000)
   MAX_ITER: 270000
