@@ -523,8 +523,10 @@ if __name__ == "__main__":
     import sys
 
     logger = setup_logger(name=__name__)
-    assert sys.argv[3] in DatasetCatalog.list()
+    assert sys.argv[3] not in DatasetCatalog.list()
     meta = MetadataCatalog.get(sys.argv[3])
+    
+    print(sys.argv)
 
     dicts = load_coco_json(sys.argv[1], sys.argv[2], sys.argv[3])
     logger.info("Done loading {} samples.".format(len(dicts)))
