@@ -86,6 +86,7 @@ if __name__ == "__main__":
 
     assert len(sys.argv) >= 2, "Please provide number of points to sample per instance"
     dataset_dir = os.path.join(os.getenv("DETECTRON2_DATASETS", "datasets"), "COCO")
+    output_dir="/kaggle/working/output"
     num_points_per_instance = int(sys.argv[1])
     if len(sys.argv) == 3:
         repeat = int(sys.argv[2])
@@ -101,7 +102,7 @@ if __name__ == "__main__":
         get_point_annotations(
             os.path.join(dataset_dir, "{}.json".format(s)),
             os.path.join(
-                dataset_dir,
+                output_dir,
                 "{}_n{}_v{}_without_masks.json".format(s, num_points_per_instance, version + 1),
             ),
             num_points_per_instance,
