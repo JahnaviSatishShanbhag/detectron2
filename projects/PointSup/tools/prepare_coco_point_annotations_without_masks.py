@@ -85,13 +85,13 @@ if __name__ == "__main__":
     seed_all_rng(12345)
 
     assert len(sys.argv) >= 2, "Please provide number of points to sample per instance"
-    dataset_dir = os.path.join(os.getenv("DETECTRON2_DATASETS", "datasets"), "coco/annotations")
+    dataset_dir = os.path.join(os.getenv("DETECTRON2_DATASETS", "datasets"), "COCO")
     num_points_per_instance = int(sys.argv[1])
     if len(sys.argv) == 3:
         repeat = int(sys.argv[2])
     else:
         repeat = 1
-    s = "instances_train2017"
+    s = "train"
     for version in range(repeat):
         print(
             "Start sampling {} points per instance for annotations {}.".format(
